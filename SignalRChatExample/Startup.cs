@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SignalRChatExample.Hubs;
 
 namespace SignalRChatExample
 {
@@ -27,6 +28,8 @@ namespace SignalRChatExample
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +49,9 @@ namespace SignalRChatExample
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseSignalR(w =>
+                w.MapHub<ChatHub>("/hub/chat"));
 
             app.UseMvc(routes =>
             {
