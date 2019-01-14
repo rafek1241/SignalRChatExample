@@ -27,7 +27,6 @@ namespace SignalRChatExample
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
 
             services.AddSignalR();
-
             services.AddMediatR();
         }
 

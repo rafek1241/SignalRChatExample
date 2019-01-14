@@ -19,6 +19,7 @@ namespace SignalRChatExample.Account.Requests
         {
             Domain = AppDomain.CurrentDomain;
             Request = request;
+            Credentials = credentials;
         }
     }
 }
